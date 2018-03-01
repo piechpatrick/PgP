@@ -66,8 +66,5 @@ namespace Client.Controls
             if (ClickedEvent != null)
                 ClickedEvent(this, e);
         }
-
-
-        
     }
 }

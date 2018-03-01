@@ -7,14 +7,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" x:Name="parent" MinHeight="20" Width="20">
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="boolToVisConv"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="boolToVisConv"/>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid DataContext="{Binding ElementName=parent}" PreviewMouseUp="Grid_PreviewMouseUp">
-        <Ellipse Fill="Black" 
-                     Margin="1,1,1,1" 
-                     Visibility="{Binding Path=HasBomb, Converter={StaticResource boolToVisConv}}" />
-        <Rectangle Fill="{Binding Path=Color}" 
-                       Visibility="{Binding Path=Shown, Converter={StaticResource boolToVisConv}}"
-                       Margin="1,1,1,1"/>
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Grid>
+                <Ellipse Fill="Black" 
+                        Margin="1,1,1,1" 
+                        Visibility="{Binding Path=HasBomb, Converter={StaticResource boolToVisConv}}" />
+                <Rectangle 
+                           Style="{StaticResource RectangleStyle}"
+                            Visibility="{Binding Path=Shown, Converter={StaticResource boolToVisConv}}"
+                            Margin="1,1,1,1"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
