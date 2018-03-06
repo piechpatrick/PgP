@@ -13,14 +13,14 @@
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-            <TextBlock Text="{Binding Score}" Margin="4,4,4,4" />
+            <TextBlock Text="{Binding MineGameModel.Score}" Margin="4,4,4,4" />
             <Button Content="Restart" Command="{Binding RestartCommand}"/>
             <TextBlock Text="Time left: " Margin="4,4,4,4"/>
-            <TextBlock Text="{Binding Time}" HorizontalAlignment="Center" Margin="4,4,4,4"/>
+            <TextBlock Text="{Binding MineGameModel.Time}" HorizontalAlignment="Center" Margin="4,4,4,4"/>
             <TextBlock Text="Best score: " Margin="4,4,4,4"/>
-            <TextBlock Text="{Binding BestScore}" Margin="4,4,4,4"/>
+            <TextBlock Text="{Binding MineGameModel.BestScore}" Margin="4,4,4,4"/>
         </StackPanel>
-        <ItemsControl ItemsSource="{Binding MineControls}" Grid.Row="1" IsEnabled="{Binding IsEnabled}" >
+        <ItemsControl ItemsSource="{Binding MineGameModel.MineControls}" Grid.Row="1" IsEnabled="{Binding MineGameModel.IsEnabled}" >
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
                 <UniformGrid />
@@ -28,7 +28,7 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <controls:MineControl Color="{Binding Path=Color}" Shown="{Binding Path=Shown}"/>
+                    <controls:MineControl Color="{Binding Path=Color}" Shown="{Binding Path=Shown}"/>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>
